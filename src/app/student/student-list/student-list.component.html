@@ -1,0 +1,74 @@
+<h1>List Student</h1>
+<table>
+    <tr>
+        <td>Id</td>
+        <td>Name</td>
+        <td>Address</td>
+        <td>Mark</td>
+        <td>Update</td>
+        <td>Delete</td>
+    </tr>
+    <ng-container>
+        <tr *ngFor="let student of listStudent; index as i">
+            <td>{{student.id}}</td>
+            <td>{{student.fullName}}</td>
+            <td>{{student.address}}</td>
+            <td>{{student.mark}}</td>
+            <td>
+                <button (click)="showUpdateFrom(i)">Update</button>
+                <button (click)="remove(i)">Delete</button>
+            </td>
+        </tr>
+    </ng-container>
+</table>
+<button (click)="openFrom()">Create New Student</button>
+<h1>Show Create From</h1>
+<ng-container *ngIf="isShowCreateFrom">
+    <table>
+        <tr>
+            <td>ID</td>
+            <td><input type="number"[(ngModel)]="student.id" name="id"/></td>
+        </tr>
+        <tr>
+            <td>FullName</td>
+            <td><input type="text"[(ngModel)]="student.fullName" name="fullName"/></td>
+        </tr>
+        <tr>
+            <td>Address</td>
+            <td><input type="text"[(ngModel)]="student.address" name="address"/></td>
+        </tr>
+        <tr>
+            <td>Mark</td>
+            <td><input type="number"[(ngModel)]="student.mark" name="mark"/></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="button" value="Create"(click)="addNewStudent()"/></td>
+        </tr>
+    </table>
+</ng-container>
+<ng-container *ngIf="isShowUpdateFrom">
+    <h1>Show Update</h1>
+    <table>
+        <tr>
+            <td>ID</td>
+            <td><input type="number"[(ngModel)]="studentUpdate.id" name="id"/></td>
+        </tr>
+        <tr>
+            <td>FullName</td>
+            <td><input type="text"[(ngModel)]="studentUpdate.fullName" name="fullName"/></td>
+        </tr>
+        <tr>
+            <td>Address</td>
+            <td><input type="text"[(ngModel)]="studentUpdate.address" name="address"/></td>
+        </tr>
+        <tr>
+            <td>Mark</td>
+            <td><input type="number"[(ngModel)]="studentUpdate.mark" name="mark"/></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="button" value="Update"(click)="updateStudent(currentIdex)"/></td>
+        </tr>
+    </table>
+</ng-container>
